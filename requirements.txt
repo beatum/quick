@@ -1,0 +1,5 @@
+Django
+djangorestframework
+pillow
+Werkzeug
+django-extensions
