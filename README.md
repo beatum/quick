@@ -4,7 +4,7 @@ Quick start project
 
 # README #
 
-### Этот фаил "README" является исторически сложившимся документом. Являет собой, краткую инструкцию по использованию данного приложения. / This README would normally document whatever steps are necessary to get your application up and running. ###
+### Это исторически сложившимся документом. Являет собой, краткую инструкцию по использованию данного приложения. / This README would normally document whatever steps are necessary to get your application up and running. ###
 
 ### Для чего нужен этот репозиторий? / What is this repository for? ###
 
