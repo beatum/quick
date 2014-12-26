@@ -4,24 +4,15 @@ Django settings for quick project.
 Created by Ivan Semernyakov <direct@beatum-group.ru> http://beatum-site.ru
 """
 
-# from django.utils.translation import ugettext_lazy as _
 from django.conf import global_settings
 
-import os
-import sys
-
+import os.path
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-sys.path.insert(0, BASE_DIR)
 path = lambda *a: os.path.join(BASE_DIR, *a)
-get_text = lambda s: s
 
 #-----------------------------------------------------------------------------
 # MAIN SETTINGS
 #-----------------------------------------------------------------------------
-
-DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -71,8 +62,8 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_FINDERS = global_settings.STATICFILES_FINDERS + (
-    'compressor.finders.CompressorFinder',
     'djangobower.finders.BowerFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 #-----------------------------------------------------------------------------
@@ -82,6 +73,18 @@ STATICFILES_FINDERS = global_settings.STATICFILES_FINDERS + (
 TEMPLATE_DIRS = (
     path('templates'),
 )
+
+TEMPLATE_LOADERS = (
+    'hamlpy.template.loaders.HamlPyFilesystemLoader',
+    'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
+) + global_settings.TEMPLATE_LOADERS
+
+# TEMPLATE_LOADERS = (
+#     ('django.template.loaders.cached.Loader', (
+#         'hamlpy.template.loaders.HamlPyFilesystemLoader',
+#         'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
+#     )),
+# ) + global_settings.TEMPLATE_LOADERS
 
 #-----------------------------------------------------------------------------
 # MIDDLEWARE
@@ -111,6 +114,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # Internal packages
+    'quick.main',
+    'quick.asset',
     'quick.account',
 
     # External packages
@@ -124,6 +129,8 @@ INSTALLED_APPS = (
 # COMPRESS
 #-----------------------------------------------------------------------------
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
 COMPRESS_URL = '/'
 
 COMPRESS_ROOT = BASE_DIR
@@ -131,10 +138,10 @@ COMPRESS_ROOT = BASE_DIR
 COMPRESS_OUTPUT_DIR = 'media/compress'
 
 COMPRESS_PRECOMPILERS = (
-    ('text/coffeescript', 'coffee --compile --stdio'),
-    ('text/less', 'lessc {infile} {outfile}'),
-    ('text/x-sass', 'sass {infile} {outfile}'),
     ('text/x-scss', 'sass --scss {infile} {outfile}'),
+    ('text/x-sass', 'sass {infile} {outfile}'),
+    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/coffeescript', 'coffee --compile --stdio'),
 )
 
 # With that setting (and CoffeeScript installed), you
@@ -177,13 +184,16 @@ REST_FRAMEWORK = {
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 
 BOWER_INSTALLED_APPS = (
+    'angular-resource#1.3.8',
     'jquery#2.1.3',
     'angular#1.3.8',
-    'bootstrap#3.3.1',
-    'angular-resource#1.3.8'
+    'angular-mocks#1.3.8',
+    'angular-route#1.3.8',
+    'angular-animate#1.3.8',
+    'bootstrap#3.1.1'
 )
 
-#-----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 # LOCAL SETTINGS
 #-----------------------------------------------------------------------------
 

@@ -1,0 +1,38 @@
+-extends 'html_blank.haml'
+-load i18n
+-load compress
+-load static
+
+-block site_styles
+
+  %link{href: '{% static "sass/screen.sass" %}',
+        media: 'screen, projection',
+        rel: 'stylesheet', type: 'text/x-sass'}
+
+  -if settings.DEBUG
+    %link{href: '{% static "bootstrap/dist/css/bootstrap.min.css" %}',
+          media: 'screen, projection',
+          rel: 'stylesheet', type: 'text/css'}<
+  -else
+    %link{href: '{% static "bootstrap/dist/css/bootstrap.css" %}',
+          media: 'screen, projection',
+          rel: 'stylesheet', type: 'text/css'}<
+
+
+-block site_scripts
+
+  -if settings.DEBUG
+    %script{src: '{% static "jquery/dist/jquery.min.js" %}',
+            type: 'text/javascript'}<
+  -else
+    %script{src: '{% static "jquery/dist/jquery.js" %}',
+            type: 'text/javascript'}<
+
+-block quick_body
+
+  -block quick_header
+
+  .container<
+    -block quick_content
+
+  -block quick_footer

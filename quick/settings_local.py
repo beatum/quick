@@ -8,18 +8,16 @@ Created by Ivan Semernyakov <direct@beatum-group.ru> on 26.12.14.
 #-----------------------------------------------------------------------------
 
 from settings import *
-# from django.conf import global_settings
 
 #-----------------------------------------------------------------------------
 # DEBUG MODE
 #-----------------------------------------------------------------------------
 
 DEBUG = TEMPLATE_DEBUG = True
+COMPRESS_ENABLED = False
 
 if DEBUG:
     COMPRESS_DEBUG_TOGGLE = 'whatever'
-    FILER_DEBUG = True
-    THUMBNAIL_DEBUG = True
     INTERNAL_IPS = ('127.0.0.1', 'localhost', '*')
 
 #-----------------------------------------------------------------------------
@@ -37,11 +35,11 @@ DATABASES = {
 # DEVELOPMENT CACHE
 #-----------------------------------------------------------------------------
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     }
+# }
 
 #-----------------------------------------------------------------------------
 # EMAIL
