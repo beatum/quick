@@ -18,7 +18,6 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have an email address')
 
         user = self.model(email=self.normalize_email(email))
-
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -35,30 +34,23 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     """
-    Base class implementing a fully featured Django User model with
-    admin-compliant permissions.
-
+    User model with admin-compliant permissions.
     Email and password are required. Other fields are optional.
     """
     first_name = models.CharField(_('first name'), max_length=30, blank=True,
                                   default='')
     last_name = models.CharField(_('last name'), max_length=30, blank=True,
                                  default='')
-    email = models.EmailField(
-        verbose_name='email address',
-        max_length=255,
-        unique=True,
-    )
-    phone = models.CharField(_('phone number'), max_length=30,
-                             blank=True,
+    email = models.EmailField(_('email'), max_length=255,
+                              unique=True)
+    phone = models.CharField(_('phone'), max_length=30, blank=True,
                              default='')
-    tariff = models.CharField(_('tariff plan'), max_length=2,
-                              blank=True,
+    profit = models.CharField(_('profit'), max_length=2, blank=True,
                               default='')
-    joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    joined = models.DateTimeField(_('joined'), default=timezone.now)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    avatar = models.ImageField(_('photo or avatar'), blank=True,
+    avatar = models.ImageField(_('photo'), blank=True,
                                upload_to="%Y/%m/%d")
 
     objects = UserManager()
@@ -100,13 +92,6 @@ class User(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
 
-    def has_perm(self, perm, obj=None):
-        """
-        Does the user have a specific permission?
-        """
-        # Simplest possible answer: Yes, always
-        return True
-
     def has_module_perms(self, app_label):
         """
         Does the user have permissions to view the app `app_label`?
@@ -121,3 +106,10 @@ class User(AbstractBaseUser):
         """
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+    @property
+    def is_owner(self):
+        """
+        Does the user is owner?
+        """
+        return self

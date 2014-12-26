@@ -34,7 +34,7 @@ class UserCreateForm(forms.ModelForm):
 
     def save(self, commit=True):
         # Save the provided password in hashed format
-        user = super(QuickUserCreateForm, self).save(commit=False)
+        user = super(UserCreateForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
@@ -71,7 +71,7 @@ class UserAdmin(UserAdmin):
     list_filter = ('is_admin', 'is_active', 'joined',)
     fieldsets = (
         ('Authorization', {'fields': ('email', 'password')}),
-        ('Bill account', {'fields': ('tariff',)}),
+        ('Profit plan', {'fields': ('profit',)}),
         ('Personal info', {'fields': (
             'avatar', 'first_name', 'last_name', 'phone',)}),
         ('Permissions', {'fields': ('is_active',)}),
