@@ -13,7 +13,8 @@ from .permissions import IsOwnerOrReadOnly
 
 class UserViewSet(viewsets.ModelViewSet):
     """
-    A viewset for read, delete or update user instances, only for owner
+    Allow only authorized users allow view, but only owner can modify existing
+    instances. TODO: Delete method must be excluded!
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
