@@ -1,0 +1,87 @@
+[
+    {
+        "pk": 1,
+        "model": "account.user",
+        "fields": {
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@admin.ru",
+            "phone": "+(123)456-7890",
+            "tariff": "",
+            "is_active": true,
+            "is_admin": true,
+            "last_login": "2012-10-28T21:36:57.799Z",
+            "password": "pbkdf2_sha256$12000$x1E4eiWvbZCV$d3ZAFGnjnn8eJSgumxspZGmPvbhn2JdKVBHPlFsqHn0=",
+            "date_joined": "2012-10-28T21:36:57.799Z",
+            "avatar": null
+        }
+    },
+    {
+        "pk": 2,
+        "model": "account.user",
+        "fields": {
+            "first_name": "Jhon",
+            "last_name": "Lenon",
+            "email": "jhon@user.ru",
+            "phone": "+(123)456-7890",
+            "tariff": "",
+            "is_active": true,
+            "is_admin": false,
+            "last_login": "2012-10-28T21:36:57.799Z",
+            "password": "pbkdf2_sha256$12000$x1E4eiWvbZCV$d3ZAFGnjnn8eJSgumxspZGmPvbhn2JdKVBHPlFsqHn0=",
+            "date_joined": "2012-10-28T21:36:57.799Z",
+            "avatar": null
+        }
+    },
+    {
+        "pk": 3,
+        "model": "account.user",
+        "fields": {
+            "first_name": "Martin",
+            "last_name": "Luter",
+            "email": "martin@user.ru",
+            "phone": "+(123)456-7890",
+            "tariff": "",
+            "is_active": true,
+            "is_admin": false,
+            "last_login": "2012-10-28T21:36:57.799Z",
+            "password": "pbkdf2_sha256$12000$x1E4eiWvbZCV$d3ZAFGnjnn8eJSgumxspZGmPvbhn2JdKVBHPlFsqHn0=",
+            "date_joined": "2012-10-28T21:36:57.799Z",
+            "avatar": null
+        }
+    },
+    {
+        "pk": 4,
+        "model": "account.user",
+        "fields": {
+            "first_name": "Vasy",
+            "last_name": "Pupkin",
+            "email": "vasy@user.ru",
+            "phone": "+(123)456-7890",
+            "tariff": "",
+            "is_active": true,
+            "is_admin": false,
+            "last_login": "2012-10-28T21:36:57.799Z",
+            "password": "pbkdf2_sha256$12000$x1E4eiWvbZCV$d3ZAFGnjnn8eJSgumxspZGmPvbhn2JdKVBHPlFsqHn0=",
+            "date_joined": "2012-10-28T21:36:57.799Z",
+            "avatar": null
+        }
+    },
+    {
+        "pk": 5,
+        "model": "account.user",
+        "fields": {
+            "first_name": "Petya",
+            "last_name": "Petrov",
+            "email": "petya@user.ru",
+            "phone": "+(123)456-7890",
+            "tariff": "",
+            "is_active": true,
+            "is_admin": false,
+            "last_login": "2012-10-28T21:36:57.799Z",
+            "password": "pbkdf2_sha256$12000$x1E4eiWvbZCV$d3ZAFGnjnn8eJSgumxspZGmPvbhn2JdKVBHPlFsqHn0=",
+            "date_joined": "2012-10-28T21:36:57.799Z",
+            "avatar": null
+        }
+    }
+]
