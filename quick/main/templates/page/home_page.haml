@@ -5,3 +5,8 @@
 -block quick_content
   %h1<
     {{ message }}
+  <div ng-include="'/static/templates/static/navbar.html'" ng-controller="NavbarController as vm"></div>
+    <div class="container-fluid">
+      <div class="ng-view row">
+    </div>
+  </div>

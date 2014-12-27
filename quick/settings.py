@@ -4,9 +4,10 @@ Django settings for quick project.
 Created by Ivan Semernyakov <direct@beatum-group.ru> http://beatum-site.ru
 """
 
+import os
+import datetime
 from django.conf import global_settings
 
-import os.path
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 path = lambda *a: os.path.join(BASE_DIR, *a)
 
@@ -129,8 +130,6 @@ INSTALLED_APPS = (
 # COMPRESS
 #-----------------------------------------------------------------------------
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
 COMPRESS_URL = '/'
 
 COMPRESS_ROOT = BASE_DIR
@@ -141,27 +140,17 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'sass --scss {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
     ('text/less', 'lessc {infile} {outfile}'),
-    ('text/coffeescript', 'coffee --compile --stdio'),
 )
-
-# With that setting (and CoffeeScript installed), you
-# could add the following code to your templates:
-#
-# {% load compress %}
-#
-# {% compress js %}
-# <script type="text/coffeescript" charset="utf-8"
-# src="/static/js/awesome.coffee" />
-# <script type="text/coffeescript" charset="utf-8">
-# # Functions:
-# square = (x) -> x * x
-# </script>
-# {% endcompress %}
-
 
 #-----------------------------------------------------------------------------
 # DJANGO REST FRAMEWORK
 #-----------------------------------------------------------------------------
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14)
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -172,7 +161,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         # http://habrahabr.ru/post/243427/
         # https://github.com/GetBlimp/django-rest-framework-jwt
-        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
     'PAGINATE_BY': 10
 }
@@ -184,8 +173,8 @@ REST_FRAMEWORK = {
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 
 BOWER_INSTALLED_APPS = (
-    'angular-resource#1.3.8',
     'jquery#2.1.3',
+    'angular-resource#1.3.8',
     'angular#1.3.8',
     'angular-mocks#1.3.8',
     'angular-route#1.3.8',

@@ -34,8 +34,8 @@
 
         -block site_scripts_no_compression
 
-        %body{ng-app:'{% block quick_ng_app %}quickApp{% endblock %}'}<
-
+        %body{ng-app:'{% block quick_ng_app %}application{% endblock %}'}<
+          <base href="/" />
           -block quick_body
 
             -compress js
