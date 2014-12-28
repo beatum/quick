@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('thinkster.accounts', [
-      'thinkster.accounts.controllers',
-      'thinkster.accounts.services'
+    .module('quick.accounts', [
+      'quick.accounts.controllers',
+      'quick.accounts.services'
     ]);
 
   angular
-    .module('thinkster.accounts.controllers', []);
+    .module('quick.accounts.controllers', []);
 
   angular
-    .module('thinkster.accounts.services', []);
+    .module('quick.accounts.services', []);
 })();

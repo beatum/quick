@@ -2,24 +2,24 @@
   'use strict';
 
   angular
-    .module('thinkster', [
-      'thinkster.config',
-      'thinkster.routes',
-      'thinkster.accounts',
-      'thinkster.authentication',
-      'thinkster.layout',
-      'thinkster.posts',
-      'thinkster.utils'
+    .module('quick', [
+      'quick.config',
+      'quick.routes',
+      'quick.accounts',
+      'quick.authentication',
+      'quick.layout',
+      'quick.posts',
+      'quick.utils'
     ]);
 
   angular
-    .module('thinkster.config', []);
+    .module('quick.config', []);
 
   angular
-    .module('thinkster.routes', ['ngRoute']);
+    .module('quick.routes', ['ngRoute']);
 
   angular
-    .module('thinkster')
+    .module('quick')
     .run(run);
 
   run.$inject = ['$http'];

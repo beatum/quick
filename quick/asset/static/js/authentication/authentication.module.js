@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('thinkster.authentication', [
-      'thinkster.authentication.controllers',
-      'thinkster.authentication.services'
+    .module('quick.authentication', [
+      'quick.authentication.controllers',
+      'quick.authentication.services'
     ]);
 
   angular
-    .module('thinkster.authentication.controllers', []);
+    .module('quick.authentication.controllers', []);
 
   angular
-    .module('thinkster.authentication.services', ['ngCookies']);
+    .module('quick.authentication.services', ['ngCookies']);
 })();

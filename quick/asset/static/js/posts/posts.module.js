@@ -2,18 +2,18 @@
   'use strict';
 
   angular
-    .module('thinkster.posts', [
-      'thinkster.posts.controllers',
-      'thinkster.posts.directives',
-      'thinkster.posts.services'
+    .module('quick.posts', [
+      'quick.posts.controllers',
+      'quick.posts.directives',
+      'quick.posts.services'
     ]);
 
   angular
-    .module('thinkster.posts.controllers', []);
+    .module('quick.posts.controllers', []);
 
   angular
-    .module('thinkster.posts.directives', ['ngDialog']);
+    .module('quick.posts.directives', ['ngDialog']);
 
   angular
-    .module('thinkster.posts.services', []);
+    .module('quick.posts.services', []);
 })();

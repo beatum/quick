@@ -1,12 +1,12 @@
 /**
 * AccountController
-* @namespace thinkster.accounts.controllers
+* @namespace quick.accounts.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.accounts.controllers')
+    .module('quick.accounts.controllers')
     .controller('AccountController', AccountController);
 
   AccountController.$inject = ['$location', '$routeParams', 'Posts', 'Account', 'Snackbar'];
@@ -25,7 +25,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.accounts.controllers.AccountController
+    * @memberOf quick.accounts.controllers.AccountController
     */
     function activate() {
       var username = $routeParams.username.substr(1);

@@ -1,12 +1,12 @@
 /**
  * Posts
- * @namespace thinkster.posts.directives
+ * @namespace quick.posts.directives
  */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.posts.directives')
+    .module('quick.posts.directives')
     .directive('posts', posts);
 
   /**
@@ -16,7 +16,7 @@
     /**
      * @name directive
      * @desc The directive to be returned
-     * @memberOf thinkster.posts.directives.Posts
+     * @memberOf quick.posts.directives.Posts
      */
     var directive = {
       controller: 'PostsController',

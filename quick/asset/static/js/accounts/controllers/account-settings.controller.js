@@ -1,12 +1,12 @@
 /**
  * AccountSettingsController
- * @namespace thinkster.accounts.controllers
+ * @namespace quick.accounts.controllers
  */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.accounts.controllers')
+    .module('quick.accounts.controllers')
     .controller('AccountSettingsController', AccountSettingsController);
 
   AccountSettingsController.$inject = [
@@ -28,7 +28,7 @@
     /**
      * @name activate
      * @desc Actions to be performed when this controller is instantiated.
-     * @memberOf thinkster.accounts.controllers.AccountSettingsController
+     * @memberOf quick.accounts.controllers.AccountSettingsController
      */
     function activate() {
       var authenticatedAccount = Authentication.getAuthenticatedAccount();
@@ -71,7 +71,7 @@
     /**
      * @name destroy
      * @desc Destroy this account
-     * @memberOf thinkster.accounts.controllers.AccountSettingsController
+     * @memberOf quick.accounts.controllers.AccountSettingsController
      */
     function destroy() {
       Account.destroy(vm.account.username).then(accountSuccessFn, accountErrorFn);
@@ -101,7 +101,7 @@
     /**
      * @name update
      * @desc Update this account
-     * @memberOf thinkster.accounts.controllers.AccountSettingsController
+     * @memberOf quick.accounts.controllers.AccountSettingsController
      */
     function update() {
       var username = $routeParams.username.substr(1);

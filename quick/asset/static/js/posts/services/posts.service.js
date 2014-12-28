@@ -1,12 +1,12 @@
 /**
  * Posts
- * @namespace thinkster.posts.services
+ * @namespace quick.posts.services
  */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.posts.services')
+    .module('quick.posts.services')
     .factory('Posts', Posts);
 
   Posts.$inject = ['$http'];
@@ -30,7 +30,7 @@
      * @name all
      * @desc Get all Posts
      * @returns {Promise}
-     * @memberOf thinkster.posts.services.Posts
+     * @memberOf quick.posts.services.Posts
      */
     function all() {
       return $http.get('/api/v1/posts/');
@@ -42,7 +42,7 @@
      * @desc Create a new Post
      * @param {string} content The content of the new Post
      * @returns {Promise}
-     * @memberOf thinkster.posts.services.Posts
+     * @memberOf quick.posts.services.Posts
      */
     function create(content) {
       return $http.post('/api/v1/posts/', {
@@ -56,7 +56,7 @@
      * @desc Get the Posts of a given user
      * @param {string} username The username to get Posts for
      * @returns {Promise}
-     * @memberOf thinkster.posts.services.Posts
+     * @memberOf quick.posts.services.Posts
      */
     function get(id) {
       return $http.get('/api/v1/accounts/' + id + '/posts/');
