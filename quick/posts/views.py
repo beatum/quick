@@ -1,5 +1,9 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
+#-*- coding: utf-8 -*-
+"""
+Created by Ivan Semernyakov <direct@beatum-group.ru> on 28.12.14.
+"""
 
 from .models import Post
 from .permissions import IsAuthorOfPost

@@ -1,4 +1,9 @@
 from rest_framework import serializers
+#-*- coding: utf-8 -*-
+"""
+Created by Ivan Semernyakov <direct@beatum-group.ru> on 28.12.14.
+"""
+
 
 from quick.authentication.serializers import AccountSerializer
 from .models import Post
