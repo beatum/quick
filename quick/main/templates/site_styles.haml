@@ -1,0 +1,22 @@
+-# Stylesheet
+-load static
+
+%link{href: '{% static "sass/screen.sass" %}',
+      media: 'screen, projection',
+      rel: 'stylesheet', type: 'text/x-sass'}
+
+-if settings.DEBUG
+  %link{:href => "{% static 'bootstrap/dist/css/bootstrap.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'bootstrap-material-design/dist/css/material.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'bootstrap-material-design/dist/css/ripples.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'ngDialog/css/ngDialog.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'ngDialog/css/ngDialog-theme-default.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'snackbarjs/src/snackbar.css' %}", :rel => "stylesheet", :type => "text/css"}/
+
+-else
+  %link{:href => "{% static 'bootstrap/dist/css/bootstrap.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'bootstrap-material-design/dist/css/material.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'ngDialog/css/ngDialog.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'ngDialog/css/ngDialog-theme-default.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "{% static 'snackbarjs/dist/snackbar.min.css' %}", :rel => "stylesheet", :type => "text/css"}/

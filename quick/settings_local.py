@@ -13,8 +13,9 @@ from settings import *
 # DEBUG MODE
 #-----------------------------------------------------------------------------
 
-DEBUG = TEMPLATE_DEBUG = True
-COMPRESS_ENABLED = False
+DEBUG = os.environ.get('DEBUG', True)
+TEMPLATE_DEBUG = True
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 if DEBUG:
     COMPRESS_DEBUG_TOGGLE = 'whatever'
@@ -23,6 +24,8 @@ if DEBUG:
 #-----------------------------------------------------------------------------
 # DATABASE
 #-----------------------------------------------------------------------------
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {

@@ -4,7 +4,7 @@
     -spaceless
       -load i18n
       -load compress
-      -load static
+      -load staticfiles
       -block quick_title_root
         %title<
           {% block quick_title %}{% block trans %}Quick Project{% endblock trans %}{% endblock quick_title %}
@@ -34,7 +34,7 @@
 
         -block site_scripts_no_compression
 
-        %body{ng-app:'{% block quick_ng_app %}application{% endblock %}'}<
+        %body{ng-app:'{% block quick_ng_app %}thinkster{% endblock %}'}<
           <base href="/" />
           -block quick_body
 

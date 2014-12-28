@@ -1,16 +1,23 @@
 Django==1.7.1
 Markdown==2.5.2
 Pillow==2.6.1
+PyJWT==0.3.2
 PyYAML==3.11
 Pygments==2.0.1
 Werkzeug==0.9.6
 argparse==1.2.1
+dj-database-url==0.3.0
+dj-static==0.0.6
 django-appconf==0.6
 django-bower==5.0.1
 django-compressor==1.4
 django-extensions==1.4.9
 djangorestframework==3.0.2
+# djangorestframework-jwt==1.1.1
+drf-nested-routers==0.9.0
+futures==2.2.0
 hamlpy==0.82.2
 pytz==2014.10
 six==1.8.0
+static3==0.5.1
 wsgiref==0.1.2
