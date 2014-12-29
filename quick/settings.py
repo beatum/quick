@@ -17,7 +17,7 @@ path = lambda *a: os.path.join(BASE_DIR, *a)
 
 ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = 'authentication.Account'
+AUTH_USER_MODEL = 'account.Account'
 
 SECRET_KEY = '*=g!3f#aj8_p)dv43hvw$s512#f6&1$)j4iua9(f6x65a73&z7'
 
@@ -28,6 +28,8 @@ ADMINS = (
 ROOT_URLCONF = 'quick.urls'
 
 WSGI_APPLICATION = 'quick.wsgi.application'
+
+SITE_ID = 1
 
 #-----------------------------------------------------------------------------
 # LANGUAGE, TIME-ZONE AND INTERNATIONALIZATION
@@ -80,13 +82,6 @@ TEMPLATE_LOADERS = (
     'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
 ) + global_settings.TEMPLATE_LOADERS
 
-# TEMPLATE_LOADERS = (
-#     ('django.template.loaders.cached.Loader', (
-#         'hamlpy.template.loaders.HamlPyFilesystemLoader',
-#         'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
-#     )),
-# ) + global_settings.TEMPLATE_LOADERS
-
 #-----------------------------------------------------------------------------
 # MIDDLEWARE
 #-----------------------------------------------------------------------------
@@ -106,7 +101,8 @@ MIDDLEWARE_CLASSES = (
 #-----------------------------------------------------------------------------
 
 INSTALLED_APPS = (
-    # django packages
+
+    # Django packages
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -114,16 +110,19 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    # External packages
+    'rest_framework',
+
     # Internal packages
-    'quick.main',
+    'quick.core',
+    'quick.account',
+    #'quick.account.registration',
     'quick.asset',
-    'quick.posts',
-    'quick.authentication',
+    'quick.app.posts',
 
     # External packages
     'django_extensions',
     'compressor',
-    'rest_framework',
     'djangobower',
 )
 
@@ -167,14 +166,14 @@ COMPRESS_PRECOMPILERS = (
 #     'PAGINATE_BY': 10
 # }
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-    )
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.SessionAuthentication',
+#     )
+# }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #-----------------------------------------------------------------------------
 # BOWER

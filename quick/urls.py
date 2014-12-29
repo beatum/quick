@@ -3,34 +3,45 @@
 Created by Ivan Semernyakov <direct@beatum-group.ru> on 26.12.14.
 """
 from django.contrib import admin
-
 from django.conf.urls import include, patterns, url
-from rest_framework_nested import routers
-
-from authentication.views import AccountViewSet, LoginView, LogoutView
-from posts.views import AccountPostsViewSet, PostViewSet
-from main.views import IndexView
-
-router = routers.SimpleRouter()
-router.register(r'accounts', AccountViewSet)
-router.register(r'posts', PostViewSet)
-
-accounts_router = routers.NestedSimpleRouter(router, r'accounts',
-                                             lookup='account')
-accounts_router.register(r'posts', AccountPostsViewSet)
+from django.views.generic import TemplateView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = patterns('',
+    url(r'^$', TemplateView.as_view(template_name="index.html"), name='home'),
 
-    url(r'^api/v1/', include(router.urls)),
-    url(r'^api/v1/', include(accounts_router.urls)),
-    url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
-    url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^signup/$', TemplateView.as_view(template_name="signup.html"),
+        name='signup'),
+    url(r'^email-verification/$',
+        TemplateView.as_view(template_name="email_verification.html"),
+        name='email-verification'),
+    url(r'^login/$', TemplateView.as_view(template_name="login.html"),
+        name='login'),
+    url(r'^password-reset/$',
+        TemplateView.as_view(template_name="password_reset.html"),
+        name='password-reset'),
+    url(r'^password-reset/confirm/$',
+        TemplateView.as_view(template_name="password_reset_confirm.html"),
+        name='password-reset-confirm'),
+
+    url(r'^user-details/$',
+        TemplateView.as_view(template_name="user_details.html"),
+        name='user-details'),
+    url(r'^password-change/$',
+        TemplateView.as_view(template_name="password_change.html"),
+        name='password-change'),
+
+
+    # this url is used to generate email content
+    url(r'^password-reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        TemplateView.as_view(template_name="password_reset_confirm.html"),
+        name='password_reset_confirm'),
+
+    url(r'^rest-auth/', include('quick.account.urls')),
+    # url(r'^rest-auth/registration/', include('quick.account.registration.urls')),
+    # url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^.*$', IndexView.as_view(), name='index'),
 )
-
 
 from settings import MEDIA_ROOT, STATIC_ROOT
 urlpatterns += patterns(

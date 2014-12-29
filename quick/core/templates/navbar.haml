@@ -1,0 +1,46 @@
+-load staticfiles
+-load i18n
+.navbar.navbar-inverse.navbar-static-top{role: 'navigation'}<
+  .container<
+    .col-md-12<
+      .navbar-header<
+        %button.navbar-toggle.collapsed{data-toggle: 'collapse', data-target: '#quick-navbar'}<
+          %span.sr-only<
+            -trans 'Toggle Navigation'
+          %span.icon-bar<
+          %span.icon-bar<
+          %span.icon-bar<
+        %a.navbar-brand{href: '/'}<
+          -trans 'Quick Project'
+
+      .navbar-collapse.collapse{id: 'quick-navbar'}<
+        %ul.nav.navbar-nav.pull-right<
+          %li.dropdown<
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}<
+              Настройки пользователя
+              %span.caret<
+            %ul.dropdown-menu{role: "menu"}<
+              / these pages don't require user token
+              %li<
+                %a{href: "{% url 'signup' %}"}<
+                  -trans 'Регистрация'
+              %li<
+                %a{href: "{% url 'email-verification' %}"}<
+                  -trans 'Подтверждение почты'
+              %li<
+                %a{href: "{% url 'login' %}"}<
+                  -trans 'Войти'
+              %li<
+                %a{href: "{% url 'password-reset' %}"}<
+                  -trans 'Cбросить пароль'
+              %li<
+                %a{href: "{% url 'password-reset-confirm' %}"}<
+                  -trans 'Подтверждение сброса пароля'
+              %li.divider
+              / these pages require user token
+              %li<
+                %a{href: "{% url 'user-details' %}"}<
+                  -trans 'Настройки пользователя'
+              %li<
+                %a{href: "{% url 'password-change' %}"}<
+                  -trans 'Изменить пароль'

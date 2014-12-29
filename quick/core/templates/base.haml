@@ -1,0 +1,47 @@
+-extends 'html_blank.haml'
+-load i18n
+-load compress
+-load staticfiles
+
+-block site_styles
+  -include 'site_styles.haml'
+
+-block site_scripts
+  -include 'site_scripts.haml'
+
+-block quick_body
+
+  -block quick_header
+    -include 'navbar.haml'
+
+  .container-fluid<
+    .col-md-8.col-md-offset-2<
+      .panel.panel-default<
+        .panel-body<
+          -block quick_content
+
+  -block quick_footer
+
+  -block app_scripts
+    -include 'app_scripts.haml'
+
+  -block app_scripts_no_compression
+    <script type="text/javascript">
+      var error_response = function(data){
+        $('.api-response').html("API Response: " + data.status + ' ' + data.statusText + '<br/>Content: ' + data.responseText);
+      }
+      var susccess_response = function(data){
+        $('.api-response').html("API Response: OK<br/>Content: " + JSON.stringify(data));
+      }
+
+      $().ready(function(){
+        $('form.ajax-post button[type=submit]').click(function(){
+          var form = $('form.ajax-post');
+          $.post(form.attr('action'), form.serialize())
+          .fail(function(data){error_response(data);})
+          .done(function(data){susccess_response(data);});
+          return false;
+        });
+      });
+    </script>
+
