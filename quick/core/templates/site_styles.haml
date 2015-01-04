@@ -1,21 +1,24 @@
 -# Stylesheet
 -load static
 
-%link{href: '{% static "sass/screen.sass" %}',
-      media: 'screen, projection',
-      rel: 'stylesheet', type: 'text/x-sass'}
--if settings.DEBUG
-  %link{:href => "{% static 'bootstrap/dist/css/bootstrap.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  %link{:href => "{% static 'bootstrap-material-design/dist/css/material.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'bootstrap-material-design/dist/css/ripples.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'ngDialog/css/ngDialog.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'ngDialog/css/ngDialog-theme-default.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'snackbarjs/src/snackbar.css' %}", :rel => "stylesheet", :type => "text/css"}/
+-if debug
+  %link{href: "{% static 'bootstrap/dist/css/bootstrap.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'bootstrap-material-design/dist/css/material-wfont.css' %}", rel: "stylesheet", type: "text/css"}/
+  -# Use custom color as primary in screen.less
+  %link{href: '{% static "less/screen.less" %}', media: 'screen, projection', rel: 'stylesheet', type: 'text/less'}/
+  %link{href: '{% static "sass/screen.sass" %}', media: 'screen, projection', rel: 'stylesheet', type: 'text/x-sass'}/
+  %link{href: "{% static 'bootstrap-material-design/dist/css/ripples.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'ngDialog/css/ngDialog.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'ngDialog/css/ngDialog-theme-default.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'snackbarjs/src/snackbar.css' %}", rel: "stylesheet", type: "text/css"}/
 
 -else
-  %link{:href => "{% static 'bootstrap/dist/css/bootstrap.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  %link{:href => "{% static 'bootstrap-material-design/dist/css/material.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'ngDialog/css/ngDialog.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'ngDialog/css/ngDialog-theme-default.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
-  -#%link{:href => "{% static 'snackbarjs/dist/snackbar.min.css' %}", :rel => "stylesheet", :type => "text/css"}/
+  %link{href: "{% static 'bootstrap/dist/css/bootstrap.min.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'bootstrap-material-design/dist/css/material-wfont.min.css' %}", rel: "stylesheet", type: "text/css"}/
+  -# Use custom color as primary in screen.less
+  %link{href: '{% static "less/screen.less" %}', media: 'screen, projection', rel: 'stylesheet', type: 'text/less'}/
+  %link{href: '{% static "sass/screen.sass" %}', media: 'screen, projection', rel: 'stylesheet', type: 'text/x-sass'}/
+  %link{href: "{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'ngDialog/css/ngDialog.min.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'ngDialog/css/ngDialog-theme-default.min.css' %}", rel: "stylesheet", type: "text/css"}/
+  -#%link{href: "{% static 'snackbarjs/dist/snackbar.min.css' %}", rel: "stylesheet", type: "text/css"}/

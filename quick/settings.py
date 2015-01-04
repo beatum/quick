@@ -137,14 +137,18 @@ COMPRESS_ROOT = BASE_DIR
 COMPRESS_OUTPUT_DIR = 'media/compress'
 
 COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile}'),
     ('text/x-scss', 'sass --scss {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/less', 'lessc {infile} {outfile}'),
 )
 
 #-----------------------------------------------------------------------------
 # DJANGO REST FRAMEWORK
 #-----------------------------------------------------------------------------
+
+MIGRATION_MODULES = {
+    'authtoken': 'authtoken.migrations',
+}
 
 # JWT_AUTH = {
 #     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),

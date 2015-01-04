@@ -54,7 +54,8 @@ DATABASES = {
 if DEBUG:
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
-    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+    # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # EMAIL_HOST = 'smtp.mail.ru'
 # EMAIL_PORT = 2525
