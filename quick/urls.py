@@ -2,14 +2,12 @@
 """
 Created by Ivan Semernyakov <direct@beatum-group.ru> on 26.12.14.
 """
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.conf.urls import include, patterns, url
 from django.views.generic import TemplateView
-
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name="index.html"), name='home'),
-
     url(r'^signup/$', TemplateView.as_view(template_name="signup.html"),
         name='signup'),
     url(r'^email-verification/$',
@@ -31,17 +29,17 @@ urlpatterns = patterns('',
         TemplateView.as_view(template_name="password_change.html"),
         name='password-change'),
 
-
     # this url is used to generate email content
     url(r'^password-reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         TemplateView.as_view(template_name="password_reset_confirm.html"),
         name='password_reset_confirm'),
 
-    url(r'^rest-auth/', include('quick.account.urls')),
-    # url(r'^rest-auth/registration/', include('quick.account.registration.urls')),
-    # url(r'^accounts/', include('allauth.urls')),
+    url(r'^rest-auth/', include('quick.user.urls')),
+    url(r'^rest-auth/registration/', include('quick.user.registration.urls')),
+    url(r'^account/', include('allauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
+
 
 from settings import MEDIA_ROOT, STATIC_ROOT
 urlpatterns += patterns(

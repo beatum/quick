@@ -7,7 +7,7 @@ from rest_framework import permissions
 
 class IsAccountOwner(permissions.BasePermission):
     """
-    Set base account permission
+    Set base user permission
     """
     def has_object_permission(self, request, view, account):
         if request.user:

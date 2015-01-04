@@ -17,7 +17,7 @@ path = lambda *a: os.path.join(BASE_DIR, *a)
 
 ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = 'account.Account'
+AUTH_USER_MODEL = 'user.Account'
 
 SECRET_KEY = '*=g!3f#aj8_p)dv43hvw$s512#f6&1$)j4iua9(f6x65a73&z7'
 
@@ -82,18 +82,22 @@ TEMPLATE_LOADERS = (
     'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
 ) + global_settings.TEMPLATE_LOADERS
 
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+
 #-----------------------------------------------------------------------------
 # MIDDLEWARE
 #-----------------------------------------------------------------------------
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 #-----------------------------------------------------------------------------
@@ -103,27 +107,32 @@ MIDDLEWARE_CLASSES = (
 INSTALLED_APPS = (
 
     # Django packages
+    'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.humanize',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
 
     # External packages
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'rest_framework',
-
-    # Internal packages
-    'quick.core',
-    'quick.account',
-    #'quick.account.registration',
-    'quick.asset',
-    'quick.app.posts',
-
-    # External packages
+    'rest_framework.authtoken',
     'django_extensions',
     'compressor',
     'djangobower',
+
+    # Internal packages
+    'quick.core',
+    'quick.asset',
+    'quick.user',
+    'quick.user.registration',
+    'quick.app.posts',
 )
 
 #-----------------------------------------------------------------------------
@@ -146,38 +155,31 @@ COMPRESS_PRECOMPILERS = (
 # DJANGO REST FRAMEWORK
 #-----------------------------------------------------------------------------
 
-MIGRATION_MODULES = {
-    'authtoken': 'authtoken.migrations',
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'PAGINATE_BY': 10
 }
-
-# JWT_AUTH = {
-#     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),
-#     'JWT_ALLOW_REFRESH': True,
-#     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14)
-# }
-#
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.SessionAuthentication',
-#         'rest_framework.authentication.BasicAuthentication',
-#         # http://habrahabr.ru/post/243427/
-#         # https://github.com/GetBlimp/django-rest-framework-jwt
-#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-#     ),
-#     'PAGINATE_BY': 10
-# }
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.SessionAuthentication',
-#     )
-# }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+#-----------------------------------------------------------------------------
+# ACCOUNT
+#-----------------------------------------------------------------------------
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+ACCOUNT_ACTIVATION_DAYS = 1
 
 #-----------------------------------------------------------------------------
 # BOWER

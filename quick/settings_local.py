@@ -24,8 +24,6 @@ if DEBUG:
 #-----------------------------------------------------------------------------
 # DATABASE
 #-----------------------------------------------------------------------------
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -38,11 +36,11 @@ DATABASES = {
 # DEVELOPMENT CACHE
 #-----------------------------------------------------------------------------
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 
 #-----------------------------------------------------------------------------
 # EMAIL
@@ -64,9 +62,3 @@ if DEBUG:
 # EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = 'site@mysite.ru'
 # SERVER_EMAIL = 'site@mysite.ru'
-
-#-----------------------------------------------------------------------------
-# DEBUG TOOLBAR AND PDB
-#-----------------------------------------------------------------------------
-
-# Pass
